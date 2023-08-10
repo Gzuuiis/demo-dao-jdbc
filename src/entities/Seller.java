@@ -1,7 +1,7 @@
 package entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 public class Seller implements Serializable{
@@ -13,13 +13,15 @@ public class Seller implements Serializable{
 	private String email;
 	private Date birthDate;
 	private Double baseSalary;
+	private Department department;
 	
-	public Seller(int id, String name, String email, Date birthDate, Double baseSalary) {
+	public Seller(int id, String name, String email, Date birthDate, Double baseSalary, Department department) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.birthDate = birthDate;
 		this.baseSalary = baseSalary;
+		this.department = department;
 	}
 
 	public int getId() {
@@ -62,8 +64,16 @@ public class Seller implements Serializable{
 		this.baseSalary = baseSalary;
 	}
 
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	public int hashCode() {
-		return Objects.hash(baseSalary, birthDate, email, id, name);
+		return Objects.hash(baseSalary, birthDate, department, email, id, name);
 	}
 
 	public boolean equals(Object obj) {
@@ -75,15 +85,15 @@ public class Seller implements Serializable{
 			return false;
 		Seller other = (Seller) obj;
 		return Objects.equals(baseSalary, other.baseSalary) && Objects.equals(birthDate, other.birthDate)
-				&& Objects.equals(email, other.email) && id == other.id && Objects.equals(name, other.name);
+				&& Objects.equals(department, other.department) && Objects.equals(email, other.email) && id == other.id
+				&& Objects.equals(name, other.name);
 	}
-
 
 	public String toString() {
 		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary="
-				+ baseSalary + "]";
+				+ baseSalary + ", department=" + department.getName() + "]";
 	}
-	
+
 	
 	
 }
