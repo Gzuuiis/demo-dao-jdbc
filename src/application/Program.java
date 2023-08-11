@@ -19,7 +19,9 @@ public class Program {
 		SellerDao sellerDao = DaoFactory.createSellerDao(); // assim o programa não conhece a implementação, apenas a interface
 		// Assim geramos uma injeção de depedência sem expor a implementação
 		
-		System.out.println(seller);
+		Seller sellerById = sellerDao.findById(3);
+		
+		System.out.println(sellerById);
 
 	} 	
 
